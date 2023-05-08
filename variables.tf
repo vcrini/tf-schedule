@@ -7,32 +7,27 @@ variable "aws_subnet" {
 }
 variable "deploy_environment" {
   description = "type of environment a.k.a test/prod"
-  type = string
+  type        = string
 }
 variable "dbname" {
   description = "name of the db"
-  type = string
+  type        = string
 }
 variable "endpoint" {
   description = "database uri"
-  type = string
+  type        = string
 }
 variable "port" {
   description = "DB port"
-  type = string
+  type        = string
 }
 variable "prefix" {
   description = "used to identify infrastructure"
-  type = string
+  type        = string
 }
 variable "query" {
   description = "sql instruction to launch periodically"
-  type = string
-}
-variable "retention_in_days" {
-  default     = 30
-  description = "how many days wait before deleting logs"
-  type        = number
+  type        = string
 }
 variable "role_arn" {
   description = "assumed to create infrastructure in enviroment where .hcl is ran"
@@ -44,12 +39,12 @@ variable "role_arn_lambda_name" {
 }
 variable "sc_lambda" {
   description = "Lambda security group"
-  type = list(string)
+  type        = list(string)
 
 }
 variable "secret_name" {
   description = "name to use as parameter to be retrieved by ssm"
-  type = string
+  type        = string
 }
 variable "tag" {
   default = {
@@ -59,15 +54,11 @@ variable "tag" {
 }
 variable "timeout" {
   description = "function timeout"
-  type = number
-  default = 3
+  type        = number
+  default     = 3
 }
 variable "user" {
   description = "database user"
-  type = string
-}
-variable "vpc_id" {
-  description = "id representing AWS Virtual Private Cloud"
   type        = string
 }
 locals {

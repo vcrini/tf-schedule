@@ -16,13 +16,13 @@ resource "aws_lambda_function" "schedule" {
 
   environment {
     variables = {
-  DBNAME=var.dbname
-  ENDPOINT=var.endpoint
-  PORT=var.port
-  QUERY=var.query
-  REGION=local.region
-  SECRET_NAME=var.secret_name
-  USER=var.user
+      DBNAME      = var.dbname
+      ENDPOINT    = var.endpoint
+      PORT        = var.port
+      QUERY       = var.query
+      REGION      = local.region
+      SECRET_NAME = var.secret_name
+      USER        = var.user
     }
   }
 
@@ -35,11 +35,11 @@ resource "aws_lambda_function" "schedule" {
   runtime                        = "python3.8"
   source_code_hash               = filebase64sha256("function.zip")
   tags                           = var.tag
-  timeout                         = var.timeout
+  timeout                        = var.timeout
   vpc_config {
     #because is used as a bash array variable elsewhere
-    subnet_ids=split(",",trim(var.aws_subnet,"[]"))
-    security_group_ids=var.sc_lambda
+    subnet_ids         = split(",", trim(var.aws_subnet, "[]"))
+    security_group_ids = var.sc_lambda
   }
 }
 
