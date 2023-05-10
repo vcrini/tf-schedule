@@ -18,12 +18,7 @@ def handler(event, context):
     client = session.client('ssm')
     response = client.get_parameter(Name=secret_name)
     passwd = response["Parameter"]["Value"]
-    # import telnetlib
     params = {"endpoint": endpoint, "user": user, "port": port, "database": dbname, "query": query}
-    # print("before telnet {}:{} ".format(params["endpoint"], params["port"]))
-    # tn = telnetlib.Telnet(params["endpoint"], params["port"])
-    # print(tn)
-    # print("after telnet")
     try:
         print(params)
         # print(response)
