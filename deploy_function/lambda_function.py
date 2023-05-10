@@ -21,15 +21,13 @@ def handler(event, context):
     params = {"endpoint": endpoint, "user": user, "port": port, "database": dbname, "query": query}
     try:
         print(params)
-        # print(response)
         conn = pymysql.connect(host=params["endpoint"], user=params["user"], passwd=passwd, port=params["port"], db=params["database"])
-        print("1")
         cur = conn.cursor()
-        print("2")
-        cur.execute(params["query"])
-        print("3")
-        query_results = cur.fetchall()
-        print(query_results)
+        for q in params["query"].split(";"):
+            print(q)
+            cur.execute(q)
+            query_results = cur.fetchall()
+            print(query_results)
     except Exception as e:
         print("Database connection failed due to {}".format(e))
         return event
